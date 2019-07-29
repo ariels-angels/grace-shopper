@@ -1,5 +1,7 @@
 # Boilermaker
 
+Peter Lee
+
 ## Quick Start Guide:
 
 1.  create an empty repo on Github and clone it to your local machine
