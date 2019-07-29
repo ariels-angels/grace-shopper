@@ -2,9 +2,12 @@
 
 Names:
 
+```
 Peter Lee
 Gary Aloisio
 Zachary Resnick
+Timothy Cao
+```
 
 ## Quick Start Guide:
 
