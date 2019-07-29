@@ -1,7 +1,10 @@
-# Boilermaker
+# Grace Shopper
+
+Names:
 
 Peter Lee
 Gary Aloisio
+Zachary Resnick
 
 ## Quick Start Guide:
 
