@@ -1,6 +1,7 @@
 const crypto = require('crypto')
 const Sequelize = require('sequelize')
 const db = require('../db')
+const Cart = require('./cart')
 
 const User = db.define('user', {
   email: {
@@ -60,6 +61,13 @@ User.encryptPassword = function(plainText, salt) {
 /**
  * hooks
  */
+
+//The below hook will create a new, active, cart for a new user.  We will then make a user a new cart when th4y checkout.  This means every user will always have an active cart
+const createCart = async user => {
+  const cart = await Cart.create({active: true})
+  cart.setUser(user)
+}
+
 const setSaltAndPassword = user => {
   if (user.changed('password')) {
     user.salt = User.generateSalt()
@@ -72,3 +80,4 @@ User.beforeUpdate(setSaltAndPassword)
 User.beforeBulkCreate(users => {
   users.forEach(setSaltAndPassword)
 })
+User.afterCreate(createCart)
