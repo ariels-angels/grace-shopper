@@ -1,6 +1,5 @@
 const {Product, User} = require('./server/db/models')
 const db = require('./server/db')
-// const {green, red} = require('chalk')
 
 const users = [
   {
