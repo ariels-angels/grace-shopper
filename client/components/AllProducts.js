@@ -10,7 +10,7 @@ class AllProducts extends React.Component {
   render() {
     const products = this.props.productList
     console.log('products>>>>>>>>>>>>>>>>>>>>', products)
-    return <div>hello</div>
+    return <div>{products && products[0].title}</div>
   }
 }
 
