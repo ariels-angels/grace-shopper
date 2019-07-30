@@ -1,5 +1,5 @@
 const User = require('./user')
-
+const Product = require('./product')
 /**
  * If we had any associations to make, this would be a great place to put them!
  * https://sequelize-guides.netlify.com/association-types/
@@ -15,5 +15,6 @@ const User = require('./user')
  * instead of: const User = require('../db/models/user')
  */
 module.exports = {
-  User
+  User,
+  Product
 }
