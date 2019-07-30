@@ -17,8 +17,8 @@ const Cart = require('./cart')
  * instead of: const User = require('../db/models/user')
  */
 
-Product.belongsToMany(Cart, {through: 'cartItem'})
-Cart.belongsToMany(Product, {through: 'cartItem'})
+Product.belongsToMany(Cart, {through: 'cartItems'})
+Cart.belongsToMany(Product, {through: 'cartItems'})
 Cart.belongsTo(User)
 User.hasMany(Cart)
 
