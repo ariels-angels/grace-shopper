@@ -1,3 +1,4 @@
+const db = require('../db')
 const User = require('./user')
 const Product = require('./product')
 const Cart = require('./cart')
@@ -22,6 +23,7 @@ Cart.belongsTo(User)
 User.hasMany(Cart)
 
 module.exports = {
+  db,
   User,
   Product,
   Cart
