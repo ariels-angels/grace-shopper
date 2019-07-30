@@ -135,7 +135,7 @@ const products = [
       'A resurrection of snowboarding’s past, this ride-able piece of history is built for surfing snow in your own backyard. While this snowboard is gripped and ready to rip, it is not recommended for riding at resorts or on hardpack or icy conditions. Please consult your resort before riding The Throwback on their trails.',
     rating: 9.5,
     price: 149.95,
-    imageURL:
+    imageUrl:
       'https://www.burton.com/static/product/W19/15977104000130_1.png?impolicy=bglt&imwidth=486'
   },
   {
@@ -145,7 +145,7 @@ const products = [
       'Wipe on a glob of our Burton All-Season Speed Sauce paste wax to rapidly increase your speed for a few critical runs. Whether dropping in for a race run, hitting a giant spring kicker or just charging to beat your buddies to the best line on deep powder days, one simple application will give you the added speed you need.',
     rating: 9.7,
     price: 19.95,
-    imageURL:
+    imageUrl:
       'https://www.burton.com/static/product/W19/10807102000_1.png?impolicy=bglt&imwidth=486'
   },
   {
@@ -154,7 +154,7 @@ const products = [
     description: `Jam out n' shred in the Salomon Brigade+ Audio Helmet. With less weight and an active ventilation system for max climate control, you'll never want to take this bad boy off.`,
     rating: 9.2,
     price: 129.95,
-    imageURL:
+    imageUrl:
       'https://images.evo.com/imgp/700/140256/576314/salomon-brigade-audio-helmet-all-black.jpg'
   },
   {
@@ -163,7 +163,7 @@ const products = [
     description: `Designed with extra room in order to fit over your helmet, the Anon MFI XL Hooded Clava delivers the style of a ninja warrior with the comfort of your favorite hoodie -- make of that what you will, but just know that this thing is sick! Stretch fleece fabric is comfortable against the skin and works to naturally shed moisture. If you've already got a pair of Anon MFI goggles, you'd be foolish to pass up the Anon MFI XL Hooded Clava.`,
     rating: 8.2,
     price: 69.95,
-    imageURL:
+    imageUrl:
       'https://images.evo.com/imgp/700/102825/454419/anon-mfi-xl-hooded-clava-black-front.jpg'
   },
   {
