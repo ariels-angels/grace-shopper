@@ -5,7 +5,6 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 
 class SingleProduct extends React.Component {
   render() {
-    const {products} = this.props
     const currentProduct = this.props.products.find(
       product => product.id === Number(this.props.match.params.id)
     )
@@ -17,7 +16,7 @@ class SingleProduct extends React.Component {
           <h1>{currentProduct.title}</h1>
           <img src={currentProduct.imageUrl} />
           <p>
-            <li>Price: ${currentProduct.price}</li>
+            <li>Price: ${currentProduct.price / 100}</li>
             <li>Rating: {currentProduct.rating}/10</li>
             <li>Description: {currentProduct.description}</li>
           </p>
