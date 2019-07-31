@@ -103,7 +103,9 @@ const createApp = () => {
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
   const server = app.listen(PORT, () =>
-    console.log(`Solemnly swearing we're up to no good on localhost:${PORT}`)
+    console.log(
+      `Solemnly swearing we're up to no good on http://localhost:${PORT}`
+    )
   )
 
   // set up our socket control center
