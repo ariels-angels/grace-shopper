@@ -88,7 +88,7 @@ const products = [
     rating: 5,
     price: 349.99,
     imageUrl:
-      'https://www.burton.com/static/product/W19/17037101001_1.png?impolicy=bglt&imwidth=282 1x, https://www.burton.com/static/product/W19/17037101001_1.png?impolicy=bglt&imwidth=564 2x'
+      'https://www.burton.com/static/product/W19/17037101001_1.png?impolicy=bglt&imwidth=282'
   },
   {
     title: 'Mens Burton Custom Flying V Snowboard',
@@ -97,7 +97,7 @@ const products = [
     rating: 5,
     price: 599.99,
     imageUrl:
-      'https://www.burton.com/static/product/W19/10707105000150_1.png?impolicy=bglt&imwidth=282 1x, https://www.burton.com/static/product/W19/10707105000150_1.png?impolicy=bglt&imwidth=564 2x'
+      'https://www.burton.com/static/product/W19/10707105000150_1.png?impolicy=bglt&imwidth=282'
   },
   {
     title: 'Burton Dunmore Jacket',
@@ -107,7 +107,7 @@ const products = [
     rating: 5,
     price: 169.99,
     imageUrl:
-      'https://www.burton.com/static/product/W19/13067103300_5.png?impolicy=bglt&imwidth=282 1x, https://www.burton.com/static/product/W19/13067103300_5.png?impolicy=bglt&imwidth=564 2x'
+      'https://www.burton.com/static/product/W19/13067103300_5.png?impolicy=bglt&imwidth=282'
   },
   {
     title: 'Burton Genesis X EST Snowboard Binding',
@@ -117,7 +117,7 @@ const products = [
     rating: 5,
     price: 449.99,
     imageUrl:
-      'srcset=“https://www.burton.com/static/product/W19/16911103004_1.png?impolicy=bglt&imwidth=282 1x, https://www.burton.com/static/product/W19/16911103004_1.png?impolicy=bglt&imwidth=564 2x”'
+      'https://www.burton.com/static/product/W19/16911103004_1.png?impolicy=bglt&imwidth=282'
   },
   {
     title: 'Analog Ice Out Bib Pant',
@@ -126,7 +126,7 @@ const products = [
     rating: 5,
     price: 209.99,
     imageUrl:
-      'https://www.burton.com/static/product/W19/20624100700_4.png?impolicy=bglt&imwidth=282 1x, https://www.burton.com/static/product/W19/20624100700_4.png?impolicy=bglt&imwidth=564 2x'
+      'https://www.burton.com/static/product/W19/20624100700_4.png?impolicy=bglt&imwidth=282'
   },
   {
     title: 'Burton Throwback Snowboard',
