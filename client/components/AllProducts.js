@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getAllProducts} from '../store/product'
+import {getAllProducts} from '../store/allProducts'
 import Product from './Product'
 
 class AllProducts extends React.Component {
@@ -27,7 +27,7 @@ class AllProducts extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  product: state.product,
+  product: state.allProducts,
   user: state.user
 })
 

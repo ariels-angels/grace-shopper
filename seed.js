@@ -117,7 +117,7 @@ const products = [
     rating: 5,
     price: 449.99,
     imageUrl:
-      'https://www.burton.com/static/product/W19/16911103004_1.png?impolicy=bglt&imwidth=282'
+      'https://www.burton.com/static/product/W19/16911103004_2.png?impolicy=bglt&imwidth=564'
   },
   {
     title: 'Analog Ice Out Bib Pant',
