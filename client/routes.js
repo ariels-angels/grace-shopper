@@ -7,6 +7,7 @@ import Products from './components/AllProducts'
 import {me} from './store'
 import SingleProduct from './components/SingleProduct'
 import Home from './components/Home'
+import {getAllProducts} from './store/allProducts'
 
 /**
  * COMPONENT
@@ -54,6 +55,7 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me())
+      dispatch(getAllProducts())
     }
   }
 }

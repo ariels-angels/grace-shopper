@@ -1,12 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getAllProducts} from '../store/allProducts'
 import Product from './Product'
 
 class AllProducts extends React.Component {
-  async componentDidMount() {
-    await this.props.getAllProducts()
-  }
   render() {
     //delete this comment
     const {product, user} = this.props
@@ -14,7 +10,7 @@ class AllProducts extends React.Component {
       return <h1>Loading!</h1>
     } else {
       //example of user:
-      console.log(user)
+      console.log(this.props)
       return (
         <div>
           {product.map(currentProduct => {
@@ -31,11 +27,7 @@ const mapStateToProps = state => ({
   user: state.user
 })
 
-const mapDispatchToProps = dispatch => ({
-  getAllProducts: () => dispatch(getAllProducts())
-})
-
-const Products = connect(mapStateToProps, mapDispatchToProps)(AllProducts)
+const Products = connect(mapStateToProps, null)(AllProducts)
 
 export default Products
 

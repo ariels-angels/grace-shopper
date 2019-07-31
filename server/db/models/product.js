@@ -13,7 +13,8 @@ const Product = db.define('product', {
     type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
-      notEmpty: true
+      notEmpty: true,
+      min: 0
     }
   },
   description: {
@@ -38,7 +39,8 @@ const Product = db.define('product', {
     type: Sequelize.FLOAT,
     allowNull: false,
     validate: {
-      notEmpty: true
+      notEmpty: true,
+      min: 0
     }
   },
   imageUrl: {
