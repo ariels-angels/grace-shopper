@@ -7,13 +7,14 @@ class AllProducts extends React.Component {
   async componentDidMount() {
     await this.props.getAllProducts()
   }
-
   render() {
     //delete this comment
-    const {product} = this.props
+    const {product, user} = this.props
     if (!product) {
       return <h1>Loading!</h1>
     } else {
+      //example of user:
+      console.log(user)
       return (
         <div>
           {product.map(currentProduct => {
@@ -26,7 +27,8 @@ class AllProducts extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  product: state.product
+  product: state.product,
+  user: state.user
 })
 
 const mapDispatchToProps = dispatch => ({
