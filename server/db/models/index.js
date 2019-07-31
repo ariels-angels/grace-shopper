@@ -2,6 +2,7 @@ const db = require('../db')
 const User = require('./user')
 const Product = require('./product')
 const Cart = require('./cart')
+const CartItem = require('./cartItem')
 /**
  * If we had any associations to make, this would be a great place to put them!
  * https://sequelize-guides.netlify.com/association-types/
@@ -17,8 +18,8 @@ const Cart = require('./cart')
  * instead of: const User = require('../db/models/user')
  */
 
-Product.belongsToMany(Cart, {through: 'cartItems'})
-Cart.belongsToMany(Product, {through: 'cartItems'})
+Product.belongsToMany(Cart, {through: CartItem})
+Cart.belongsToMany(Product, {through: CartItem})
 Cart.belongsTo(User)
 User.hasMany(Cart)
 
@@ -26,5 +27,6 @@ module.exports = {
   db,
   User,
   Product,
-  Cart
+  Cart,
+  CartItem
 }

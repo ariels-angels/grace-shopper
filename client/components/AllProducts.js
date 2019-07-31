@@ -5,15 +5,15 @@ import Product from './Product'
 class AllProducts extends React.Component {
   render() {
     //delete this comment
-    const {product, user} = this.props
-    if (!product) {
+    const {products, user} = this.props
+    if (!products) {
       return <h1>Loading!</h1>
     } else {
       //example of user:
       console.log(this.props)
       return (
         <div>
-          {product.map(currentProduct => {
+          {products.map(currentProduct => {
             return <Product key={currentProduct.id} {...currentProduct} />
           })}
         </div>
@@ -23,7 +23,7 @@ class AllProducts extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  product: state.allProducts,
+  products: state.allProducts,
   user: state.user
 })
 
