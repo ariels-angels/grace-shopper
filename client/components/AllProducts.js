@@ -1,21 +1,31 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getAllProducts} from '../store'
+import {getAllProducts} from '../store/product'
 
 class AllProducts extends React.Component {
-  componentDidMount() {
-    this.props.getAllProducts()
+  async componentDidMount() {
+    await this.props.getAllProducts()
   }
 
   render() {
-    const products = this.props.productList
-    console.log('products>>>>>>>>>>>>>>>>>>>>', products)
-    return <div>hello</div>
+    //delete this comment
+    const {product} = this.props
+    if (!product) {
+      return <h1>Loading!</h1>
+    } else {
+      return (
+        <div>
+          {product.map(product => {
+            return <p>{product.title}</p>
+          })}
+        </div>
+      )
+    }
   }
 }
 
 const mapStateToProps = state => ({
-  productList: state.product.productList
+  product: state.product
 })
 
 const mapDispatchToProps = dispatch => ({

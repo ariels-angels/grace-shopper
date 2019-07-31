@@ -66,7 +66,7 @@ User.encryptPassword = function(plainText, salt) {
 const createCart = async user => {
   const cart = await Cart.create({active: true})
   cart.setUser(user)
-}
+} //try making this into an instance method and then calling it on the specific user .afterSave
 
 const setSaltAndPassword = user => {
   if (user.changed('password')) {

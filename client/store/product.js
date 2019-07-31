@@ -14,8 +14,12 @@ const gotAllProducts = products => ({type: GOT_PRODUCTS, products})
  * THUNK CREATORS
  */
 export const getAllProducts = () => async dispatch => {
-  const {data} = await axios.get('/api/products')
-  dispatch(gotAllProducts(data))
+  try {
+    const {data} = await axios.get('/api/products')
+    dispatch(gotAllProducts(data))
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 /**
@@ -24,7 +28,7 @@ export const getAllProducts = () => async dispatch => {
 export default function(productList = [], action) {
   switch (action.type) {
     case GOT_PRODUCTS:
-      return {productList: action.products}
+      return action.products
     default:
       return productList
   }
