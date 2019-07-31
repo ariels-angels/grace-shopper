@@ -8,6 +8,7 @@ class AllProducts extends React.Component {
   }
 
   render() {
+    //delete this comment
     const {product} = this.props
     if (!product) {
       return <h1>Loading!</h1>
