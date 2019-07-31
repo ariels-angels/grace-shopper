@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {getAllProducts} from '../store/product'
+import Product from './Product'
 
 class AllProducts extends React.Component {
   async componentDidMount() {
@@ -15,8 +16,8 @@ class AllProducts extends React.Component {
     } else {
       return (
         <div>
-          {product.map(product => {
-            return <p>{product.title}</p>
+          {product.map(currentProduct => {
+            return <Product key={currentProduct.id} {...currentProduct} />
           })}
         </div>
       )
