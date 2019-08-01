@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import CartItems from './CartItems'
 import {getCurrentCart, deleteFromCart} from '../store/currentCart'
 
@@ -25,15 +26,22 @@ class Cart extends Component {
       } else {
         return (
           <div>
-            <h1>Current Cart:</h1>
-            {cartProducts.map(cartItem => (
-              <div>
-                <CartItems key={cartItem.id} {...cartItem} />
-                <button onClick={() => this.delete(cartItem.id)}>
-                  Delete Item
-                </button>
-              </div>
-            ))}
+            <h1>My Cart:</h1>
+            {!cartProducts[0] ? (
+              <h4>
+                Your cart is empty! Continue shopping{' '}
+                <Link to="/products">here</Link>
+              </h4>
+            ) : (
+              cartProducts.map(cartItem => (
+                <div>
+                  <CartItems key={cartItem.id} {...cartItem} />
+                  <button onClick={() => this.delete(cartItem.id)}>
+                    Delete Item
+                  </button>
+                </div>
+              ))
+            )}
           </div>
         )
       }
