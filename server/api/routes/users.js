@@ -16,18 +16,3 @@ router.get('/', utils.adminGateway, async (req, res, next) => {
     next(err)
   }
 })
-
-router.get('/:id/cart', utils.userGateway, async (req, res, next) => {
-  try {
-    const cart = await Cart.findOne({
-      include: [{model: Product}],
-      where: {
-        userId: req.params.id,
-        active: true
-      }
-    })
-    res.json(cart)
-  } catch (err) {
-    next(err)
-  }
-})
