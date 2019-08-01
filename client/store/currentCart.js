@@ -30,9 +30,7 @@ export const getCurrentCart = () => async dispatch => {
 
 export const addToCurrentCart = async info => {
   try {
-    // const {data} =
     await axios.post('/api/carts/active', info)
-    // dispatch(addToCart(data))
   } catch (err) {
     console.log(err)
   }

@@ -8,8 +8,8 @@ class SingleProduct extends React.Component {
   constructor() {
     super()
     this.state = {
-      productId: 0,
-      quantity: 1
+      productId: null,
+      quantity: 0
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -54,9 +54,16 @@ class SingleProduct extends React.Component {
                 value={this.state.quantity}
                 onChange={this.handleChange}
               >
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
               </select>
               <button type="submit">Add to cart</button>
             </div>
