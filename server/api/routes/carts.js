@@ -70,8 +70,8 @@ router.post('/active', async (req, res, next) => {
     const newItem = await CartItem.create({
       cartId: cart.id,
       productId: req.body.productId,
-      quantity: req.body.quantity,
-      price: req.body.productPrice
+      quantity: req.body.quantity
+      // price: req.body.productPrice
     })
     res.json(newItem)
   } catch (error) {
