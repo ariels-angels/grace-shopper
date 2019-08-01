@@ -29,7 +29,6 @@ class SingleProduct extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     const currentProduct = this.props.products.find(
       product => product.id === Number(this.props.match.params.id)
     )
