@@ -63,7 +63,7 @@ router.post('/active', async (req, res, next) => {
   try {
     const cart = await Cart.findOne({
       where: {
-        userId: req.user.id,
+        userId: 1,
         active: true
       }
     })
@@ -74,6 +74,35 @@ router.post('/active', async (req, res, next) => {
       price: req.body.productPrice
     })
     res.json(newItem)
+  } catch (error) {
+    next(error)
+  }
+})
+
+//this route will delete an item from a cart
+router.delete('/active', async (req, res, next) => {
+  try {
+    const cart = await Cart.findOne({
+      where: {
+        userId: 1,
+        active: true
+      }
+    })
+    const itemToDestroy = await CartItem.findOne({
+      where: {
+        cartId: cart.id,
+        productId: req.body.productId
+      }
+    })
+    await itemToDestroy.destroy()
+    const updatedCart = await Cart.findOne({
+      include: [{model: Product}],
+      where: {
+        userId: 1,
+        active: true
+      }
+    })
+    res.json(updatedCart)
   } catch (error) {
     next(error)
   }
