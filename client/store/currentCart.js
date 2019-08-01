@@ -28,7 +28,7 @@ export const getCurrentCart = () => async dispatch => {
   }
 }
 
-export const addToCurentCart = async info => {
+export const addToCurrentCart = async info => {
   try {
     // const {data} =
     await axios.post('/api/carts/active', info)
