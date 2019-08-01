@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User, Cart, CartItem, Product} = require('../../db/models')
+const {Cart, CartItem, Product} = require('../../db/models')
 const utils = require('./utils')
 module.exports = router
 
@@ -20,7 +20,7 @@ router.get('/active', async (req, res, next) => {
 
 router.get('/past', async (req, res, next) => {
   try {
-    const cart = await Cart.findOne({
+    const cart = await Cart.findAll({
       include: [{model: Product}],
       where: {
         userId: req.user.id,
@@ -44,12 +44,26 @@ router.get('/all', utils.adminGateway, async (req, res, next) => {
   }
 })
 
+router.get('/all/:id', utils.adminGateway, async (req, res, next) => {
+  try {
+    const cart = await Cart.findAll({
+      include: [{model: Product}],
+      where: {
+        userId: req.params.id
+      }
+    })
+    res.json(cart)
+  } catch (err) {
+    next(err)
+  }
+})
+
 //this route can add items to the active cart
 router.post('/active', async (req, res, next) => {
   try {
     const cart = await Cart.findOne({
       where: {
-        userId: 1, //req.user.id
+        userId: req.user.id,
         active: true
       }
     })
