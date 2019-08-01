@@ -15,12 +15,19 @@ class Cart extends Component {
     if (!currentCart) {
       return <h1>Loading</h1>
     } else {
-      console.log(currentCart)
-      return (
-        <div>
-          <h1>Hello World</h1>
-        </div>
-      )
+      const cartProducts = currentCart.products
+      if (!cartProducts) {
+        return <h1>Loading</h1>
+      } else {
+        return (
+          <div>
+            <h1>Current Cart:</h1>
+            {cartProducts.map(cartItem => {
+              return <CartItems key={cartItem.id} {...cartItem} />
+            })}
+          </div>
+        )
+      }
     }
   }
 }
