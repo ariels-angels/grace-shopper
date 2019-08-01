@@ -28,9 +28,11 @@ export const getCurrentCart = () => async dispatch => {
   }
 }
 
-export const addToCurrentCart = async info => {
+export const addToCurrentCart = info => async dispatch => {
   try {
     await axios.post('/api/carts/active', info)
+    const {data} = await axios.get(`/api/carts/active`)
+    dispatch(gotCurrentCart(data))
   } catch (err) {
     console.log(err)
   }
