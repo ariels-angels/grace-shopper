@@ -3,32 +3,40 @@ import {connect} from 'react-redux'
 import {getSingleProduct} from '../store/singleProduct'
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import {addToCurrentCart} from '../store/currentCart'
+import {browserHistory} from 'react-router'
 
 class SingleProduct extends React.Component {
   constructor() {
     super()
     this.state = {
       productId: null,
-      quantity: 0
+      quantity: 1
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  componentDidMount() {
+    this.setState({
+      productId: Number(this.props.match.params.id)
+    })
+  }
+
   handleChange(event) {
     event.preventDefault()
     this.setState({
-      productId: Number(this.props.match.params.id),
       [event.target.name]: Number(event.target.value)
     })
   }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault()
-    this.props.addToCurrentCart(this.state)
+    await this.props.addToCurrentCart(this.state)
+    this.props.history.push('/cart')
   }
 
   render() {
+    console.log(this.state)
     const currentProduct = this.props.products.find(
       product => product.id === Number(this.props.match.params.id)
     )
@@ -79,7 +87,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   addToCurrentCart: info => {
-    addToCurrentCart(info)
+    dispatch(addToCurrentCart(info))
   }
 })
 
