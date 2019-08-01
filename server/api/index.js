@@ -10,7 +10,7 @@ For example:
 For your `/api/routes/puppies` routes:
 router.use('/puppies', require('./routes/puppies'))
 */
-
+router.use('/carts', require('./routes/carts'))
 router.use('/users', require('./routes/users'))
 router.use('/products', require('./routes/products'))
 router.use('/example', require('./routes/example'))
