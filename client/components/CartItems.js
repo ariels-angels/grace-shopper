@@ -11,9 +11,12 @@ class CartItems extends React.Component {
       console.log(this.props)
       return (
         <div>
-          <img src={this.props.imageUrl} />
-          <h4>{this.props.title}</h4>
-          <h3>{this.props.price / 100}</h3>
+          <Link to={`/products/${this.props.id}`}>
+            <img src={this.props.imageUrl} />
+            <h4>{this.props.title}</h4>
+          </Link>
+          <h5>{this.props.price / 100}</h5>
+          <p>Quantity: {this.props.cartItem.quantity}</p>
         </div>
       )
     }

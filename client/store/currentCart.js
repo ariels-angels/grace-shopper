@@ -37,8 +37,9 @@ export const addToCurrentCart = async info => {
 }
 
 export const deleteFromCart = id => async dispatch => {
+  console.log('from reducer id', id)
   try {
-    const {data} = await axios.delete('/api/carts/active/', id)
+    const {data} = await axios.put('/api/carts/active/', id)
     dispatch(gotCurrentCart(data))
   } catch (err) {
     console.log(err)

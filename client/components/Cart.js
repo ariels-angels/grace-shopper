@@ -7,9 +7,13 @@ class Cart extends Component {
   async componentDidMount() {
     await this.props.getCurrentCart()
   }
+
   delete(productId) {
-    this.props.deleteFromCart(productId)
+    console.log(productId)
+    const body = {id: productId}
+    this.props.deleteFromCart(body)
   }
+
   render() {
     const {products, currentCart, user} = this.props
     if (!currentCart) {
@@ -22,9 +26,14 @@ class Cart extends Component {
         return (
           <div>
             <h1>Current Cart:</h1>
-            {cartProducts.map(cartItem => {
-              return <CartItems key={cartItem.id} {...cartItem} />
-            })}
+            {cartProducts.map(cartItem => (
+              <div>
+                <CartItems key={cartItem.id} {...cartItem} />
+                <button onClick={() => this.delete(cartItem.id)}>
+                  Delete Item
+                </button>
+              </div>
+            ))}
           </div>
         )
       }
