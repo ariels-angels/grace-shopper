@@ -63,7 +63,7 @@ router.post('/active', async (req, res, next) => {
   try {
     const cart = await Cart.findOne({
       where: {
-        userId: 1,
+        userId: req.user.id,
         active: true
       }
     })
@@ -84,7 +84,7 @@ router.delete('/active', async (req, res, next) => {
   try {
     const cart = await Cart.findOne({
       where: {
-        userId: 1,
+        userId: req.user.id,
         active: true
       }
     })
@@ -98,7 +98,7 @@ router.delete('/active', async (req, res, next) => {
     const updatedCart = await Cart.findOne({
       include: [{model: Product}],
       where: {
-        userId: 1,
+        userId: req.user.id,
         active: true
       }
     })
