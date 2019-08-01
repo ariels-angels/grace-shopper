@@ -80,7 +80,7 @@ router.post('/active', async (req, res, next) => {
 })
 
 //this route will delete an item from a cart
-router.put('/active', async (req, res, next) => {
+router.put('/active/delete/', async (req, res, next) => {
   try {
     console.log('req.body>>>>', req.body)
     const cart = await Cart.findOne({
