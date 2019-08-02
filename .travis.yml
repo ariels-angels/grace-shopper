@@ -24,7 +24,7 @@ deploy: # see README for details on these keys
   skip_cleanup: true
   provider: heroku
   # app should be your heroku app name; see README
-  app: grace-shredder-1906
+  app: graceshredder
   # the secure key indicates an encrypted value; see README
   api_key:
     secure: bwXkLQEcsKUjrGBKN3LdWGpgq0dVPdUH1pOrTimJw6VV3eRDkmwm69nPYgT77hXZQ/U1F1WQxFIfOxMUq4yRlhZSiMlZMRxh3Z6y7UV29PZPRCdeQvydQvkGoN1cv4WzLz5x9XPG3G2vfXzfhqQGW48OQaqvLFxabZtHeNmmPVp4dfsBypcnfY8o6BgGuGlzU3oL7vvp28qrqOpdqJ4zp200ErC9DCa4v7SFeZDZHBJP2RNuzR9LSaGrLSutA21f4Quk1CF1axdyOfg94lLqIRv14cl7dYfKrknp8fYik3PFoI+dnHyNxRpDX4Fe6GXFjdATOc1E5XErPxkQnEQ0lhOgOZLx6JrwOUBmoIBY6gAw4eTQFz8ZQTOvIb1yg9ks17vBfVFR8rMkbvsS2+ksRRS6UfHtklkD5qD/oWYBtTZfA88dH54n/mEDEKluXQG7qZOHMT9yRZn4zjdq2YUXD+uVJRYCgixputpllkVbtO61mofLjqorjt9dxOEQDWqB88l4yRiatUOfWKRXDW3kLM0am8sY2ouVf9jTWAaq29W8G5HkbrWgAfQ55w8yO+TFXM5uvrmH4Xq7iKgQWCjQkScbgetM+YzMhG745DdPZpJefQFrDhnUAA0KMdw37uqA6m1Wi+2nKRq35VJDnrxLm6zclEpP2ntAfmpYJ32Eww0=
