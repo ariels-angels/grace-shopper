@@ -60,6 +60,7 @@ Travis:
 5.  git commit -m “travis: activate deployment”
 6.  git push -u origin f/travis-deploy
 7.  git checkout master
+    Need to complete step 7
 8.  git pull
 9.  git merge f/travis-deploy
 10. npm run deploy

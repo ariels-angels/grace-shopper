@@ -28,10 +28,7 @@ class Cart extends Component {
           <div>
             <h1>My Cart:</h1>
             {!cartProducts[0] ? (
-              <h4>
-                Your cart is empty! Continue shopping{' '}
-                <Link to="/products">here</Link>
-              </h4>
+              <h4>Your cart is empty!</h4>
             ) : (
               cartProducts.map(cartItem => (
                 <div>
