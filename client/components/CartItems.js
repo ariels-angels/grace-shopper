@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {editCart} from '../store/currentCart'
 
 class CartItems extends React.Component {
   constructor(props) {
@@ -9,14 +10,15 @@ class CartItems extends React.Component {
       productId: this.props.id,
       quantity: this.props.quantity
     }
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange(event) {
+  async handleChange(event) {
     event.preventDefault()
-    this.setState({
+    await this.setState({
       [event.target.name]: Number(event.target.value)
     })
-    // axios
+    this.props.editCart(this.state)
   }
 
   render() {
@@ -24,7 +26,6 @@ class CartItems extends React.Component {
     if (!products) {
       return <h1>Loading</h1>
     } else {
-      console.log(this.props)
       return (
         <div>
           <Link to={`/products/${this.props.id}`}>
@@ -60,4 +61,10 @@ const mapStateToProps = state => ({
   user: state.user
 })
 
-export default connect(mapStateToProps, null)(CartItems)
+const mapDispatchToProps = dispatch => ({
+  editCart: info => {
+    dispatch(editCart(info))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartItems)
