@@ -122,7 +122,7 @@ router.put('/active/delete', async (req, res, next) => {
   }
 })
 
-//CREATE A ROUTE.PUT TO /ACTIVE THAT WILL RECEIVE REQ.BODY.ID (PRODUCTID) AND REQ.BODY.QUANTITY
+//this route will update an item that is already in the cart.  When a user selects a new quantity, this route will edit the quantity in the db, and resend a whole new cart to rerender the carts page
 router.put('/active', async (req, res, next) => {
   try {
     const cart = await Cart.findOne({
@@ -140,7 +140,14 @@ router.put('/active', async (req, res, next) => {
     await existingItem.update({
       quantity: req.body.quantity
     })
-    res.json(existingItem)
+    const updatedCart = await Cart.findOne({
+      include: [{model: Product}],
+      where: {
+        userId: req.user.id,
+        active: true
+      }
+    })
+    res.json(updatedCart)
   } catch (error) {
     next(error)
   }
