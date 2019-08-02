@@ -40,17 +40,13 @@ class CartItems extends React.Component {
               value={this.state.quantity}
               onChange={this.handleChange}
             >
-              <option>{this.props.cartItem.quantity}</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => {
+                if (num === this.props.cartItem.quantity) {
+                  return <option selected>{num}</option>
+                } else {
+                  return <option>{num}</option>
+                }
+              })}
             </select>
           </form>
         </div>
