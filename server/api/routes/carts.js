@@ -164,12 +164,13 @@ The below route will checkout the cart by doing the following:
 4.  create a new cart
 5.  set that carts userId to the user on session
 */
+
 router.put('/checkout', async (req, res, next) => {
   try {
     const cart = await Cart.findOne({
       include: [{model: Product}],
       where: {
-        userId: 6,
+        userId: req.user.id,
         active: true
       }
     })
@@ -184,11 +185,16 @@ router.put('/checkout', async (req, res, next) => {
         price: inventoryProduct.price
       })
     })
+    const total =
+      products.reduce((accumulator, product) => {
+        return accumulator + product.cartItem.quantity * product.price
+      }, 0) / 100
+    utils.emailConfirmation(req.user.email, cart.id, total)
     await cart.update({
       active: false
     })
     const newCart = await Cart.create({
-      userId: 6
+      userId: req.user.id
     })
     res.json(newCart)
   } catch (error) {
