@@ -51,6 +51,10 @@ class Cart extends Component {
                 return accumulator + product.cartItem.quantity * product.price
               }, 0) / 100}
             </div>
+            <h6>
+              Continue shopping <Link to="/products">here!</Link>
+            </h6>
+            <br />
           </div>
         )
       }
