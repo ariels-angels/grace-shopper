@@ -42,6 +42,15 @@ class Cart extends Component {
                 </div>
               ))
             )}
+            <div>
+              Total ({cartProducts.reduce((accumulator, product) => {
+                return accumulator + product.cartItem.quantity
+              }, 0)}{' '}
+              items): $
+              {cartProducts.reduce((accumulator, product) => {
+                return accumulator + product.cartItem.quantity * product.price
+              }, 0) / 100}
+            </div>
           </div>
         )
       }
