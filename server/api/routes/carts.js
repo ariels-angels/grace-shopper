@@ -152,3 +152,46 @@ router.put('/active', async (req, res, next) => {
     next(error)
   }
 })
+
+/*
+The below route will checkout the cart by doing the following:
+1.  finding the cart of the user on session
+2.  mapping through the products in that cart and for each product:
+  1.  Getting the quantity of that CartItem
+  2.  Loading that CartItems's product and decreasing the inventory based on the CartItem quantity
+  3.  Set the price in CartItem to the products current price
+3.  change the carts active status to false
+4.  create a new cart
+5.  set that carts userId to the user on session
+*/
+router.put('/checkout', async (req, res, next) => {
+  try {
+    const cart = await Cart.findOne({
+      include: [{model: Product}],
+      where: {
+        userId: 6,
+        active: true
+      }
+    })
+    const products = cart.products
+    products.forEach(async product => {
+      const quantityInCart = product.cartItem.quantity
+      const inventoryProduct = await Product.findByPk(product.id)
+      await inventoryProduct.update({
+        stock: inventoryProduct.stock - quantityInCart
+      })
+      await product.cartItem.update({
+        price: inventoryProduct.price
+      })
+    })
+    await cart.update({
+      active: false
+    })
+    const newCart = await Cart.create({
+      userId: 6
+    })
+    res.json(newCart)
+  } catch (error) {
+    next(error)
+  }
+})
