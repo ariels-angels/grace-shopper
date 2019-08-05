@@ -189,7 +189,12 @@ router.put('/checkout', async (req, res, next) => {
       products.reduce((accumulator, product) => {
         return accumulator + product.cartItem.quantity * product.price
       }, 0) / 100
-    utils.emailConfirmation(req.user.email, cart.id, total)
+    utils.emailConfirmation(
+      req.user.email,
+      cart.id,
+      total,
+      products
+    ) //This line sends the email confirmation
     await cart.update({
       active: false
     })

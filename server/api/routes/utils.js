@@ -15,7 +15,7 @@ module.exports = {
     }
   },
 
-  emailConfirmation: function(email, cartId, totalPrice) {
+  emailConfirmation: function(email, cartId, totalPrice, products) {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -27,8 +27,19 @@ module.exports = {
       from: 'graceshredder.fsa@gmail.com',
       to: String(email),
       subject: `Thank you for your purchase from Grace Shredder:  Order #${cartId}`,
-      html: `<h2 style="color:green;text-align:center;">Grace-Shredder!</h2> <h5 style="text-align:center;">Thank you for shopping with us.</h5>
-      <p>Your order number is ${cartId} and your total was $${totalPrice}</p><h6 style="text-align:center;">Continue shopping at <a href="http://localhost:7693/cart">www.Grace-Shredder.com</a></h6>`
+      html: `<h2 style="color:green;text-align:center;">Grace-Shredder!</h2>
+      <h5 style="text-align:center;">Thank you for shopping with us.</h5>
+      <p>Your order number is <span style="font-weight:bold">${cartId}</span> and you purchased:</p>
+      <ul>
+        ${products.map(
+          product =>
+            `<li>${product.title}.............. $${product.price *
+              product.cartItem.quantity /
+              100}</li>`
+        )}
+        <li>Total.............. $${totalPrice}</li>
+      </ul>
+      <h6 style="text-align:center;">Continue shopping at <a href="https://grace-shredder-1906.herokuapp.com/">www.Grace-Shredder-1906.com</a></h6>`
     }
     transporter.sendMail(mailOptions, function(error, info) {
       if (error) {
