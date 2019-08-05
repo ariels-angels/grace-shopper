@@ -20,7 +20,7 @@ const Navbar = ({handleClick, isLoggedIn, currentCart}) => (
           </a>
           {console.log(currentCart)}
           {!currentCart.products ? (
-            <Link to="/cart">Cart </Link>
+            <Link to="/cart">Cart {'(0)'}</Link>
           ) : (
             <Link to="/cart">
               Cart{' ('}
