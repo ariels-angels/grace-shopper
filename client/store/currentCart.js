@@ -53,6 +53,15 @@ export const editCart = info => async dispatch => {
   }
 }
 
+export const checkout = () => async dispatch => {
+  try {
+    const {data} = await axios.put('/api/carts/checkout')
+    dispatch(gotCurrentCart(data))
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 /*
  * INITIAL STATE
  */
