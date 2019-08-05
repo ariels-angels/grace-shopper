@@ -170,7 +170,7 @@ router.put('/checkout', async (req, res, next) => {
     const cart = await Cart.findOne({
       include: [{model: Product}],
       where: {
-        userId: req.user.id,
+        userId: 6,
         active: true
       }
     })
@@ -189,12 +189,17 @@ router.put('/checkout', async (req, res, next) => {
       products.reduce((accumulator, product) => {
         return accumulator + product.cartItem.quantity * product.price
       }, 0) / 100
-    utils.emailConfirmation(req.user.email, cart.id, total)
+    utils.emailConfirmation(
+      'zachary.l.resnick@gmail.com',
+      cart.id,
+      total,
+      products
+    ) //This line sends the email confirmation
     await cart.update({
       active: false
     })
     const newCart = await Cart.create({
-      userId: req.user.id
+      userId: 6
     })
     res.json(newCart)
   } catch (error) {
