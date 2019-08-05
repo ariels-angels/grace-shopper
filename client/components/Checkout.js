@@ -1,10 +1,18 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {checkout} from '../store/currentCart'
 
 class Checkout extends Component {
   constructor() {
     super()
     this.state = {}
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  async handleSubmit() {
+    event.preventDefault()
+    await this.props.checkout()
+    this.props.history.push('/products')
   }
 
   render() {
@@ -42,6 +50,34 @@ class Checkout extends Component {
             </tr>
           </table>
           <h1>Billing and Payment Information</h1>
+          <form onSubmit={this.handleSubmit}>
+            <h2>Address:</h2>
+            <label>Street:</label>
+            <input />
+            <label>Apt (Optional):</label>
+            <input />
+            <label>City:</label>
+            <input />
+            <label>State:</label>
+            <input />
+            <label>Zip code:</label>
+            <input />
+            <label>Country:</label>
+            <input />
+            <h2>Card Details:</h2>
+            <label>Name on card:</label>
+            <input />
+            <label>Credit card number:</label>
+            <input />
+            <label>Expiration date:</label>
+            <input />
+            <label>CVC:</label>
+            <input />
+            <label>Zip code:</label>
+            <input />
+            <br />
+            <button type="submit">Submit Payment</button>
+          </form>
         </div>
       )
     }
@@ -52,4 +88,10 @@ const mapStateToProps = state => ({
   cart: state.currentCart.products
 })
 
-export default connect(mapStateToProps, null)(Checkout)
+const mapDispatchToProps = dispatch => ({
+  checkout: () => {
+    dispatch(checkout())
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout)

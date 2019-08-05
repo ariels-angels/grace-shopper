@@ -39,27 +39,31 @@ class Cart extends Component {
                   <button onClick={() => this.delete(cartItem.id)}>
                     Delete Item
                   </button>
+                  <div>
+                    Total ({cartProducts.reduce((accumulator, product) => {
+                      return accumulator + product.cartItem.quantity
+                    }, 0)}{' '}
+                    items): $
+                    {cartProducts.reduce((accumulator, product) => {
+                      return (
+                        accumulator + product.cartItem.quantity * product.price
+                      )
+                    }, 0) / 100}
+                  </div>
+                  <div>
+                    <button
+                      onClick={() => this.props.history.push('/checkout')}
+                    >
+                      Checkout
+                    </button>
+                  </div>
+                  <div>
+                    Continue shopping <Link to="/products">here!</Link>
+                  </div>
+                  <br />
                 </div>
               ))
             )}
-            <div>
-              Total ({cartProducts.reduce((accumulator, product) => {
-                return accumulator + product.cartItem.quantity
-              }, 0)}{' '}
-              items): $
-              {cartProducts.reduce((accumulator, product) => {
-                return accumulator + product.cartItem.quantity * product.price
-              }, 0) / 100}
-            </div>
-            <div>
-              <button onClick={() => this.props.history.push('/checkout')}>
-                Checkout
-              </button>
-            </div>
-            <div>
-              Continue shopping <Link to="/products">here!</Link>
-            </div>
-            <br />
           </div>
         )
       }
