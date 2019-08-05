@@ -54,18 +54,24 @@ class SingleProduct extends React.Component {
           </p>
           <form onSubmit={this.handleSubmit}>
             <div>
-              <label>Quantity:</label>
-              <select
-                type="text"
-                name="quantity"
-                value={this.state.quantity}
-                onChange={this.handleChange}
-              >
-                {[...Array(+currentProduct.stock).keys()].map(i => {
-                  return <option>{i + 1}</option>
-                })}
-              </select>
-              <button type="submit">Add to cart</button>
+              {currentProduct.stock === 0 ? (
+                <div>Out of stock!</div>
+              ) : (
+                <div>
+                  <label>Quantity:</label>
+                  <select
+                    type="text"
+                    name="quantity"
+                    value={this.state.quantity}
+                    onChange={this.handleChange}
+                  >
+                    {[...Array(+currentProduct.stock).keys()].map(i => {
+                      return <option>{i + 1}</option>
+                    })}
+                  </select>
+                  <button type="submit">Add to cart</button>
+                </div>
+              )}
             </div>
           </form>
         </div>
