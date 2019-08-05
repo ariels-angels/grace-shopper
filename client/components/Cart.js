@@ -33,36 +33,36 @@ class Cart extends Component {
                 <Link to="/products">here</Link>
               </h4>
             ) : (
-              cartProducts.map(cartItem => (
-                <div>
-                  <CartItems key={cartItem.id} {...cartItem} />
-                  <button onClick={() => this.delete(cartItem.id)}>
-                    Delete Item
-                  </button>
+              <div>
+                {cartProducts.map(cartItem => (
                   <div>
-                    Total ({cartProducts.reduce((accumulator, product) => {
-                      return accumulator + product.cartItem.quantity
-                    }, 0)}{' '}
-                    items): $
-                    {cartProducts.reduce((accumulator, product) => {
-                      return (
-                        accumulator + product.cartItem.quantity * product.price
-                      )
-                    }, 0) / 100}
-                  </div>
-                  <div>
-                    <button
-                      onClick={() => this.props.history.push('/checkout')}
-                    >
-                      Checkout
+                    <CartItems key={cartItem.id} {...cartItem} />
+                    <button onClick={() => this.delete(cartItem.id)}>
+                      Delete Item
                     </button>
                   </div>
-                  <div>
-                    Continue shopping <Link to="/products">here!</Link>
-                  </div>
-                  <br />
+                ))}
+                <div>
+                  Total ({cartProducts.reduce((accumulator, product) => {
+                    return accumulator + product.cartItem.quantity
+                  }, 0)}{' '}
+                  items): $
+                  {cartProducts.reduce((accumulator, product) => {
+                    return (
+                      accumulator + product.cartItem.quantity * product.price
+                    )
+                  }, 0) / 100}
                 </div>
-              ))
+                <div>
+                  <button onClick={() => this.props.history.push('/checkout')}>
+                    Checkout
+                  </button>
+                </div>
+                <div>
+                  Continue shopping <Link to="/products">here!</Link>
+                </div>
+                <br />
+              </div>
             )}
           </div>
         )
