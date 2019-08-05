@@ -5,10 +5,11 @@ import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
 import Products from './components/AllProducts'
 import Cart from './components/Cart'
-import {me} from './store'
+import {me, getCurrentCart} from './store'
 import SingleProduct from './components/SingleProduct'
 import Home from './components/Home'
 import {getAllProducts} from './store/allProducts'
+import Checkout from './components/Checkout'
 
 /**
  * COMPONENT
@@ -32,6 +33,7 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route exact path="/cart" component={Cart} />
+            <Route exact path="/checkout" component={Checkout} />
             <Route path="/" component={Home} />
           </Switch>
         )}
@@ -58,6 +60,7 @@ const mapDispatch = dispatch => {
     loadInitialData() {
       dispatch(me())
       dispatch(getAllProducts())
+      dispatch(getCurrentCart())
     }
   }
 }
