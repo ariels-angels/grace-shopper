@@ -170,7 +170,7 @@ router.put('/checkout', async (req, res, next) => {
     const cart = await Cart.findOne({
       include: [{model: Product}],
       where: {
-        userId: 6,
+        userId: req.user.id,
         active: true
       }
     })
@@ -190,7 +190,7 @@ router.put('/checkout', async (req, res, next) => {
         return accumulator + product.cartItem.quantity * product.price
       }, 0) / 100
     utils.emailConfirmation(
-      'zachary.l.resnick@gmail.com',
+      req.user.email,
       cart.id,
       total,
       products
@@ -199,7 +199,7 @@ router.put('/checkout', async (req, res, next) => {
       active: false
     })
     const newCart = await Cart.create({
-      userId: 6
+      userId: req.user.id
     })
     res.json(newCart)
   } catch (error) {
