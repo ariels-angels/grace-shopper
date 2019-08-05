@@ -41,11 +41,11 @@ class CartItems extends React.Component {
               value={this.state.quantity}
               onChange={this.handleChange}
             >
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => {
-                if (num === this.props.cartItem.quantity) {
-                  return <option selected>{num}</option>
+              {[...Array(+this.props.stock).keys()].map(i => {
+                if (i + 1 === this.props.cartItem.quantity) {
+                  return <option selected>{i + 1}</option>
                 } else {
-                  return <option>{num}</option>
+                  return <option>{i + 1}</option>
                 }
               })}
             </select>
