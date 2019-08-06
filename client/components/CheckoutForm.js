@@ -14,7 +14,7 @@ class CheckoutForm extends Component {
     let response = await fetch('/charge', {
       method: 'POST',
       headers: {'Content-Type': 'text/plain'},
-      body: token.id
+      body: 'tok_1F4DyP2eZvKYlo2CZ1iSCpYN'
     })
 
     if (response.ok) this.setState({complete: true})
