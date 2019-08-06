@@ -42,7 +42,12 @@ class CartItems extends React.Component {
               onChange={this.handleChange}
             >
               {[...Array(+this.props.stock).keys()].map(i => {
-                if (i + 1 === this.props.cartItem.quantity) {
+                if (
+                  i + 1 ===
+                  (this.props.cartItem
+                    ? this.props.cartItem.quantity
+                    : this.props.quantity)
+                ) {
                   return <option selected>{i + 1}</option>
                 } else {
                   return <option>{i + 1}</option>

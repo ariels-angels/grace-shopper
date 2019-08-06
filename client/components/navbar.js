@@ -38,9 +38,21 @@ const NavigationBar = ({handleClick, isLoggedIn, currentCart}) => (
           ) : (
             <div className="navOptions">
               {/* The NavigationBar will show these links before you log in */}
+              <Link to="/">HOME</Link>
               <Link to="/login">LOGIN</Link>
               <Link to="/signup">SIGN-UP</Link>
               <Link to="/products">PRODUCTS</Link>
+              {!currentCart.length ? (
+                <Link to="/cart">CART {'(0)'}</Link>
+              ) : (
+                <Link to="/cart">
+                  CART{' ('}
+                  {currentCart.reduce((acc, product) => {
+                    return acc + product.quantity
+                  }, 0)}
+                  {')'}
+                </Link>
+              )}
             </div>
           )}
         </nav>
