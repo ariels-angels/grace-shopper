@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {editCart} from '../store/currentCart'
+import {Card} from 'react-bootstrap'
 
 class CartItems extends React.Component {
   constructor(props) {
@@ -27,12 +28,11 @@ class CartItems extends React.Component {
       return <h1>Loading</h1>
     } else {
       return (
-        <div>
+        <Card.Body>
           <Link to={`/products/${this.props.id}`}>
-            <img src={this.props.imageUrl} />
-            <h4>{this.props.title}</h4>
+            <Card.Title>{this.props.title}</Card.Title>
           </Link>
-          <h5>{this.props.price / 100}</h5>
+          <h5>${this.props.price / 100}</h5>
           <form>
             <label>Quantity:</label>
             <select
@@ -55,7 +55,7 @@ class CartItems extends React.Component {
               })}
             </select>
           </form>
-        </div>
+        </Card.Body>
       )
     }
   }
