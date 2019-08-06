@@ -32,17 +32,16 @@ const users = [
 const products = [
   {
     title: 'M-216 Ski Search and Rescue Helmet W/ Princeton Tec Task Light Up',
-    stock: 5,
+    stock: 25,
     description:
       'The M-216 Ski Search & Rescue helmet features a hybrid shell design; ABS hard front shell provides reinforcement for mounted accessories, and an in-mold PC rear shell reduces weight. The helmet includes: A glass-reinforced polycarbonate shroud for mounting NODs, cameras and head lamps. A customized Boa Fit System guarantees a precise fit adjustment with single handed quick release. Accessory rails allow for mounting a variety of lights and cameras. Removable ear cups specifically designed to be comfortable while using in-ear communication systems and includes a pocket for drop-in audio device compatibility. 14 Total Vents: Eight crown (adjustable), two front (passive open), four rear (fixed open) for maximum cooling during high exertion rescues. Eight adjustable crown vents with three positions (open, half open and closed) to accommodate both warm and cold conditions. Above-goggle vent channels draw air through the helmet to the rear exhaust ports to reduce goggle fogging. Integrated goggle strap retention. The M-216 also comes standard with your choice of a Princeton Tec Switch MPLS or Switch Rail task light that will mount directly onto the front section of the helmet rail.',
     rating: 7,
     price: 27999,
-    imageUrl:
-      'https://op1.0ps.us/978-550-ffffff-no-upscale/opplanet-team-wendy-m-216-ski-search-and-rescue-helmet-w-princeton-tec-switch-mpls-light-black-83-1bkgy-sm-main.jpg'
+    imageUrl: 'https://i.imgur.com/K6l2lrN.jpg'
   },
   {
     title: '1992 Nuptse Printed Quilted Shell Down Jacket',
-    stock: 14,
+    stock: 25,
     description:
       'The North Faces 1992 Nuptse jacket is one of the most iconic styles and we have bought it in a multitude of colours this season, from turquoise to plain black. This one is made from printed water-repellent shell and filled with lightweight, insulating down for extra warmth. Its equipped with a drawstring hem and internal zipped pocket to keep your valuables secure. Shown here with And Wander trousers, The North Face T-shirt, Salomon boots.',
     rating: 8,
@@ -52,7 +51,7 @@ const products = [
   },
   {
     title: 'SNOW Boots New Tignes',
-    stock: 2,
+    stock: 25,
     description:
       'impressively snow boots in a  high class of its own - sensationally designed; truly fashionably accentuated with a rhomb-quilting, gray stitching and logo-lettering at the back; interior heel for a comfortable running feeling - upmarket premium-quality - luxery BOGNER Style!!',
     rating: 4,
@@ -62,7 +61,7 @@ const products = [
   },
   {
     title: 'Discovery Junior Positrack IFP Skis with Turnamic Bindings',
-    stock: 12,
+    stock: 25,
     description:
       'L.L.Bean offers a wide selection of cross country skiing gear, equipment and clothing to meet everyones needs, from experts preparing for a nordic race or extended backcountry trip, to beginners looking to try skate skiing for the first time. Along with our own brand, we offer skis from brands like Rossignol, Fischer and Altai and with a complete selection of bindings and poles. L.L.Bean has all the equipment, accessories and apparel to get you trail-ready this winter: windproof pants and jackets that move and breathe with you, gloves and hats, plus luggage, portable boot dryers and even wooden wall ski racks for the lodge',
     rating: 9,
@@ -72,7 +71,7 @@ const products = [
   },
   {
     title: 'Jones Snowboards Lone Wolf Snowboard',
-    stock: 1,
+    stock: 25,
     description:
       'Swallowtail board for big turns, big lines, and super fast speeds Directional shape is made for riding fast, straight, and in control Medium-stiff flex holds up at high speeds for a super stable feel Directional rocker profile provides excellent float and edge control Spoon 3.0 base contours add float and control in deep untouched snow Narrow waist, long sidecut encourages high speed aggressive riding Light core with carbon laminates is stable, rigid, and responsive Super fast Sintered base makes sure you get back to the lift easily',
     rating: 10,
@@ -92,7 +91,7 @@ const products = [
   },
   {
     title: 'Mens Burton Custom Flying V Snowboard',
-    stock: '25',
+    stock: 25,
     description: `Since its humble beginnings, innovation has defined the Burton Custom series and set it apart as the most popular, versatile, and mimicked board in snowboarding. Since 1996, this icon has reigned supreme and constantly evolved with a proven formula that combines time-honored design with envelope-pushing ingredients to create a lightweight, poppy, and highly versatile board. Offered in two versions, the precision and stability of the Custom camber is the top choice for many pro riders, while the Custom Flying V combines camber's power with the relaxed float of rocker for the best of both worlds.`,
     rating: 5,
     price: 59999,
@@ -178,7 +177,7 @@ const products = [
   },
   {
     title: 'Anon Raider Helmet',
-    stock: 8,
+    stock: 25,
     description: `No-fuss function is the name of the game, and the Anon Raider Helmet is throwin' points up on the board like nobody's business.`,
     rating: 9,
     price: 4899,
@@ -187,7 +186,7 @@ const products = [
   },
   {
     title: 'Anon Prime MIPS Helmet',
-    stock: 12,
+    stock: 25,
     description: `If you've outgrown the days of goggles-under-the-helmet steeze, sketchy park jumps, and dicey urban rails but still push it across the upper mountain, Anon Prime MIPS Helmet has your name all over it.`,
     rating: 10,
     price: 17499,
@@ -196,7 +195,7 @@ const products = [
   },
   {
     title: 'Anon Rodan Helment',
-    stock: 20,
+    stock: 25,
     description: `It's time to ride on with the Anon Rodan Helmet. The built-in passive ventilation makes sure your cranium stays cool, while its 360° Boa® Fit System gives you the ability to cinch it down for a tight yet comfy shred-friendly fit.`,
     rating: 9,
     price: 9099,
@@ -205,7 +204,7 @@ const products = [
   },
   {
     title: 'Oakley MOD 5 Helmet',
-    stock: 10,
+    stock: 25,
     description:
       'The Oakley MOD 5 Helmet features premium, impeccable design for the discerning all mountain rider.',
     rating: 9,
@@ -215,7 +214,7 @@ const products = [
   },
   {
     title: 'Oakley MOD 5 MIPS Helmet',
-    stock: 16,
+    stock: 25,
     description: `So you think you send it for the boys, huh? Well when it comes to getting sendy, you'd be a fool to send it in anything less than the brawny Oakley MOD 5 MIPS Helmet.`,
     rating: 10,
     price: 23999,

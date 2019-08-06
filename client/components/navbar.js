@@ -3,44 +3,50 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import {Navbar, Col} from 'react-bootstrap'
 
-const Navbar = ({handleClick, isLoggedIn, currentCart}) => (
+const NavigationBar = ({handleClick, isLoggedIn, currentCart}) => (
   <div>
-    <Link to="/">
-      <h1>Grace Shredder</h1>
-    </Link>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/products">Products</Link>
-          <Link to="/">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-          {console.log(currentCart)}
-          {!currentCart.products ? (
-            <Link to="/cart">Cart {'(0)'}</Link>
+    <Navbar sticky="top" id="navbar" bg="light" expand="lg">
+      <Col>
+        <Link to="/">
+          <Navbar.Brand id="mainTitle">GRACE-SHREDDER</Navbar.Brand>
+        </Link>
+      </Col>
+      <Col>
+        <nav>
+          {isLoggedIn ? (
+            <div className="navOptions">
+              {/* The NavigationBar will show these links after you log in */}
+              <Link to="/products">PRODUCTS</Link>
+              <Link to="/">HOME</Link>
+              <a href="#" onClick={handleClick}>
+                LOGOUT
+              </a>
+              {!currentCart.products ? (
+                <Link to="/cart">CART {'(0)'}</Link>
+              ) : (
+                <Link to="/cart">
+                  CART{' ('}
+                  {currentCart.products.reduce((acc, product) => {
+                    return acc + product.cartItem.quantity
+                  }, 0)}
+                  {')'}
+                </Link>
+              )}
+            </div>
           ) : (
-            <Link to="/cart">
-              Cart{' ('}
-              {currentCart.products.reduce((acc, product) => {
-                return acc + product.cartItem.quantity
-              }, 0)}
-              {')'}
-            </Link>
+            <div className="navOptions">
+              {/* The NavigationBar will show these links before you log in */}
+              <Link to="/login">LOGIN</Link>
+              <Link to="/signup">SIGN-UP</Link>
+              <Link to="/products">PRODUCTS</Link>
+            </div>
           )}
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-          <Link to="/products">Products</Link>
-        </div>
-      )}
-    </nav>
-    <hr />
+        </nav>
+      </Col>
+      <hr />
+    </Navbar>
   </div>
 )
 
@@ -60,12 +66,12 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(mapState, mapDispatch)(Navbar)
+export default connect(mapState, mapDispatch)(NavigationBar)
 
 /**
  * PROP TYPES
  */
-Navbar.propTypes = {
+NavigationBar.propTypes = {
   handleClick: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired
 }

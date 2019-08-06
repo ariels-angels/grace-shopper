@@ -1,14 +1,25 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {Card, Row, Col} from 'react-bootstrap'
 
 export default function Product(props) {
   return (
-    <div>
+    <Card className="singleProductCard">
       <Link to={`/products/${props.id}`}>
-        <img src={props.imageUrl} />
-        <h3>{props.title}</h3>
-        <h4>${props.price / 100}</h4>
+        <Row>
+          <Col>
+            <Card.Img variant="top" src={props.imageUrl} />
+          </Col>
+          <Col>
+            <Card.Body>
+              <Card.Title className="product-title">{props.title}</Card.Title>
+            </Card.Body>
+            <Card.Text>
+              <small className="text-muted">${props.price / 100}</small>
+            </Card.Text>
+          </Col>
+        </Row>
       </Link>
-    </div>
+    </Card>
   )
 }

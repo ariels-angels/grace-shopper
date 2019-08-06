@@ -19,3 +19,90 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+#mainTitle {
+  font-size: 2em;
+  font-family: 'Crete Round', serif;
+  color: teal;
+}
+
+.navOptions {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+nav a {
+  color: black;
+}
+
+a:hover {
+  color: teal;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+#navbar {
+  border-bottom: 2px;
+  color: teal;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navOptions {
+  text-align: end;
+}
+
+.carouselText {
+  color: rgb(63, 62, 62);
+  font-weight: bold;
+  background: rgba(175, 175, 175, 0.6);
+}
+
+#carouselBody {
+  max-height: 400px;
+}
+
+.singleProductCard {
+  max-width: 27%;
+  min-width: 27%;
+  max-height: 300px;
+  margin: 5px;
+  flex-direction: row;
+}
+
+.allProducts {
+  display: flex;
+  margin-left: 5%;
+}
+
+.page-head {
+  font-size: 2em;
+  font-family: 'Crete Round', serif;
+  text-align: center;
+  text-decoration: underline;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.singleProductPage {
+  max-width: 80%;
+  min-width: 80%;
+  padding-top: 30px;
+  margin: auto;
+}
+
+.product-title {
+  color: black;
+}
+
+.loginCard {
+  max-width: 30%;
+  min-width: 30%;
+  margin-top: 30px;
+  padding: auto;
+  margin: auto;
+}
+
+#errorMessage {
+  color: red;
+  font-size: 0.75em;
+}
