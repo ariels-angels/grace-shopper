@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import CartItems from './CartItems'
 import {getCurrentCart, deleteFromCart} from '../store/currentCart'
+import {CardDeck, Card, Col, Row} from 'react-bootstrap'
 
 class Cart extends Component {
   async componentDidMount() {
@@ -28,23 +29,36 @@ class Cart extends Component {
           return <h1>Loading</h1>
         } else {
           return (
-            <div>
-              <h1>My Cart:</h1>
+            <div className="allCartItems">
+              <h1 className="page-head">SHOPPING CART:</h1>
               {!cartProducts[0] ? (
-                <h4>
+                <h4 className="emptyCart">
                   Your cart is empty! Continue shopping{' '}
                   <Link to="/products">here</Link>
                 </h4>
               ) : (
                 <div>
-                  {cartProducts.map(cartItem => (
-                    <div>
-                      <CartItems key={cartItem.id} {...cartItem} />
-                      <button onClick={() => this.delete(cartItem.id)}>
-                        Delete Item
-                      </button>
-                    </div>
-                  ))}
+                  <CardDeck>
+                    {cartProducts.map(cartItem => (
+                      <Card className="cartItem">
+                        <Row>
+                          <Col>
+                            <Card.Img
+                              variant="top"
+                              className="cartImage"
+                              src={cartItem.imageUrl}
+                            />
+                          </Col>
+                          <Col>
+                            <CartItems key={cartItem.id} {...cartItem} />
+                            <button onClick={() => this.delete(cartItem.id)}>
+                              Delete Item
+                            </button>
+                          </Col>
+                        </Row>
+                      </Card>
+                    ))}
+                  </CardDeck>
                   <div>
                     Total ({cartProducts.reduce((accumulator, product) => {
                       return accumulator + product.cartItem.quantity
@@ -81,23 +95,36 @@ class Cart extends Component {
           return <h1>Loading</h1>
         } else {
           return (
-            <div>
-              <h1>My Cart:</h1>
+            <div className="allCartItems">
+              <h1 className="page-head">SHOPPING CART:</h1>
               {!currentCart[0] ? (
-                <h4>
+                <h4 className="emptyCart">
                   Your cart is empty! Continue shopping{' '}
                   <Link to="/products">here</Link>
                 </h4>
               ) : (
                 <div>
-                  {currentCart.map(cartItem => (
-                    <div>
-                      <CartItems key={cartItem.id} {...cartItem} />
-                      <button onClick={() => this.delete(cartItem.id)}>
-                        Delete Item
-                      </button>
-                    </div>
-                  ))}
+                  <CardDeck>
+                    {currentCart.map(cartItem => (
+                      <Card className="cartItem">
+                        <Row>
+                          <Col>
+                            <Card.Img
+                              className="cartImage"
+                              variant="top"
+                              src={cartItem.imageUrl}
+                            />
+                          </Col>
+                          <Col>
+                            <CartItems key={cartItem.id} {...cartItem} />
+                            <button onClick={() => this.delete(cartItem.id)}>
+                              Delete Item
+                            </button>
+                          </Col>
+                        </Row>
+                      </Card>
+                    ))}
+                  </CardDeck>
                   <div>
                     Total ({currentCart.reduce((accumulator, product) => {
                       return accumulator + product.quantity
