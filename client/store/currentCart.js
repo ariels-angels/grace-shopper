@@ -1,4 +1,5 @@
 import axios from 'axios'
+import history from '../history'
 
 /**
  * ACTION TYPES
@@ -56,6 +57,7 @@ export const checkout = () => async dispatch => {
   try {
     const {data} = await axios.put('/api/carts/checkout')
     dispatch(gotCurrentCart(data))
+    history.push('/products')
   } catch (err) {
     console.log(err)
   }

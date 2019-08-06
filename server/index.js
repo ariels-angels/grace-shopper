@@ -10,7 +10,10 @@ const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 7693
 const app = express()
 const socketio = require('socket.io')
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc')
+const {configureRoutes} = require('./stripe')
+
+configureRoutes(app)
+
 module.exports = app
 
 // This is a global Mocha hook, used for resource cleanup.
@@ -47,7 +50,6 @@ const createApp = () => {
 
   // body parsing middleware
   app.use(express.json())
-  app.use(require('body-parser').text())
   app.use(express.urlencoded({extended: true}))
 
   // compression middleware
@@ -101,21 +103,6 @@ const createApp = () => {
       )
   })
 }
-
-app.post('/charge', async (req, res) => {
-  try {
-    let {status} = await stripe.charges.create({
-      amount: 2000,
-      currency: 'usd',
-      description: 'An example charge',
-      source: req.body
-    })
-
-    res.json({status})
-  } catch (err) {
-    res.status(500).end()
-  }
-})
 
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
