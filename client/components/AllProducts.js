@@ -1,21 +1,23 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Product from './Product'
+import {CardDeck} from 'react-bootstrap'
 
 class AllProducts extends React.Component {
   render() {
     //delete this comment
-    const {products, user} = this.props
+    const {products} = this.props
     if (!products) {
       return <h1>Loading!</h1>
     } else {
-      //example of user:
-      console.log(this.props)
       return (
         <div>
-          {products.map(currentProduct => {
-            return <Product key={currentProduct.id} {...currentProduct} />
-          })}
+          <h4 className="page-head">ALL-PRODUCTS</h4>
+          <CardDeck className="allProducts">
+            {products.map(currentProduct => {
+              return <Product key={currentProduct.id} {...currentProduct} />
+            })}
+          </CardDeck>
         </div>
       )
     }
@@ -23,8 +25,7 @@ class AllProducts extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  products: state.allProducts,
-  user: state.user
+  products: state.allProducts
 })
 
 const Products = connect(mapStateToProps, null)(AllProducts)

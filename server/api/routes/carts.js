@@ -5,6 +5,7 @@ module.exports = router
 
 router.get('/active', async (req, res, next) => {
   try {
+    // if (req.user) {
     const cart = await Cart.findOne({
       include: [{model: Product}],
       where: {
@@ -13,6 +14,7 @@ router.get('/active', async (req, res, next) => {
       }
     })
     res.json(cart)
+    // }
   } catch (err) {
     next(err)
   }

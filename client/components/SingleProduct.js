@@ -4,6 +4,7 @@ import {getSingleProduct} from '../store/singleProduct'
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import {addToCurrentCart} from '../store/currentCart'
 import {browserHistory} from 'react-router'
+import {Card, Row, Col} from 'react-bootstrap'
 
 class SingleProduct extends React.Component {
   constructor() {
@@ -44,36 +45,45 @@ class SingleProduct extends React.Component {
       return <h1>Loading!</h1>
     } else {
       return (
-        <div>
-          <h1>{currentProduct.title}</h1>
-          <img src={currentProduct.imageUrl} />
-          <p>
-            <li>Price: ${currentProduct.price / 100}</li>
-            <li>Rating: {currentProduct.rating}/10</li>
-            <li>Description: {currentProduct.description}</li>
-          </p>
-          <form onSubmit={this.handleSubmit}>
-            <div>
-              {currentProduct.stock === 0 ? (
-                <div>Out of stock!</div>
-              ) : (
-                <div>
-                  <label>Quantity:</label>
-                  <select
-                    type="text"
-                    name="quantity"
-                    value={this.state.quantity}
-                    onChange={this.handleChange}
-                  >
-                    {[...Array(+currentProduct.stock).keys()].map(i => {
-                      return <option>{i + 1}</option>
-                    })}
-                  </select>
-                  <button type="submit">Add to cart</button>
-                </div>
-              )}
-            </div>
-          </form>
+        <div className="singleProductPage">
+          <Card>
+            <Row>
+              <Col>
+                <img src={currentProduct.imageUrl} />
+              </Col>
+              <Col>
+                <Card.Title className="product-title">
+                  {currentProduct.title}
+                </Card.Title>
+                <small className="text-muted">
+                  Price: ${currentProduct.price / 100}
+                </small>
+                <Card.Text>Description: {currentProduct.description}</Card.Text>
+                <form onSubmit={this.handleSubmit}>
+                  <div>
+                    {currentProduct.stock === 0 ? (
+                      <div>Out of stock!</div>
+                    ) : (
+                      <div>
+                        <label>Quantity:</label>
+                        <select
+                          type="text"
+                          name="quantity"
+                          value={this.state.quantity}
+                          onChange={this.handleChange}
+                        >
+                          {[...Array(+currentProduct.stock).keys()].map(i => {
+                            return <option>{i + 1}</option>
+                          })}
+                        </select>
+                        <button type="submit">Add to cart</button>
+                      </div>
+                    )}
+                  </div>
+                </form>
+              </Col>
+            </Row>
+          </Card>
         </div>
       )
     }
