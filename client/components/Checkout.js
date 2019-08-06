@@ -20,10 +20,58 @@ class Checkout extends Component {
 
   render() {
     console.log('OUR PROPS:', this.props)
-    const currentCart = this.props.cart
-    if (!currentCart) {
+    const currentCart = this.props.cart.products
+    const {isLoggedIn} = this.props
+
+    if (isLoggedIn) {
+      if (!currentCart) {
+        return <h1>Loading!</h1>
+      } else {
+        return (
+          <div>
+            <h1>Order Summary</h1>
+            <table>
+              <tr>
+                <th>Items</th>
+                <th>Quantity</th>
+                <th>Price</th>
+              </tr>
+              {currentCart.map(product => {
+                return (
+                  <tr>
+                    <td>{product.title}</td>
+                    <td>{product.cartItem.quantity}</td>
+                    <td>${product.price / 100}</td>
+                  </tr>
+                )
+              })}
+              <tr>
+                <th>Total:</th>
+                <th />
+                <th>
+                  ${currentCart.reduce((accumulator, product) => {
+                    return (
+                      accumulator + product.cartItem.quantity * product.price
+                    )
+                  }, 0) / 100}
+                </th>
+              </tr>
+            </table>
+            {/* <h1>Billing and Payment Information</h1> */}
+            <Stripe
+              name="Payment Information"
+              description="Please fill the fields below"
+              amount={currentCart.reduce((accumulator, product) => {
+                return accumulator + product.cartItem.quantity * product.price
+              }, 0)}
+            />
+          </div>
+        )
+      }
+    } else if (!this.props.cart) {
       return <h1>Loading!</h1>
     } else {
+      console.log(this.props.cart)
       return (
         <div>
           <h1>Order Summary</h1>
@@ -33,11 +81,11 @@ class Checkout extends Component {
               <th>Quantity</th>
               <th>Price</th>
             </tr>
-            {currentCart.map(product => {
+            {this.props.cart.map(product => {
               return (
                 <tr>
                   <td>{product.title}</td>
-                  <td>{product.cartItem.quantity}</td>
+                  <td>{product.quantity}</td>
                   <td>${product.price / 100}</td>
                 </tr>
               )
@@ -46,8 +94,8 @@ class Checkout extends Component {
               <th>Total:</th>
               <th />
               <th>
-                ${currentCart.reduce((accumulator, product) => {
-                  return accumulator + product.cartItem.quantity * product.price
+                ${this.props.cart.reduce((accumulator, product) => {
+                  return accumulator + product.quantity * product.price
                 }, 0) / 100}
               </th>
             </tr>
@@ -56,38 +104,10 @@ class Checkout extends Component {
           <Stripe
             name="Payment Information"
             description="Please fill the fields below"
-            amount={currentCart.reduce((accumulator, product) => {
-              return accumulator + product.cartItem.quantity * product.price
+            amount={this.props.cart.reduce((accumulator, product) => {
+              return accumulator + product.quantity * product.price
             }, 0)}
           />
-          {/* <form onSubmit={this.handleSubmit}>
-            <h2>Address:</h2>
-            <label>Street:</label>
-            <input />
-            <label>Apt (Optional):</label>
-            <input />
-            <label>City:</label>
-            <input />
-            <label>State:</label>
-            <input />
-            <label>Zip code:</label>
-            <input />
-            <label>Country:</label>
-            <input />
-            <h2>Card Details:</h2>
-            <label>Name on card:</label>
-            <input />
-            <label>Credit card number:</label>
-            <input />
-            <label>Expiration date:</label>
-            <input />
-            <label>CVC:</label>
-            <input />
-            <label>Zip code:</label>
-            <input />
-            <br />
-            <button type="submit">Submit Payment</button>
-          </form> */}
         </div>
       )
     }
@@ -95,7 +115,8 @@ class Checkout extends Component {
 }
 
 const mapStateToProps = state => ({
-  cart: state.currentCart.products
+  cart: state.currentCart,
+  isLoggedIn: !!state.user.id
 })
 
 const mapDispatchToProps = dispatch => ({

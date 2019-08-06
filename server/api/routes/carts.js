@@ -237,7 +237,8 @@ router.put('/checkout', async (req, res, next) => {
       await newDbCart.update({
         active: false
       })
-      cart = []
+      req.session.cart = []
+      cart = req.session.cart
       res.json(cart)
     } else {
       const cart = await Cart.findOne({
