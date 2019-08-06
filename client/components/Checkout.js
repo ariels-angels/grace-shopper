@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {checkout} from '../store/currentCart'
 import {StripeProvider} from 'react-stripe-elements'
 import {Elements} from 'react-stripe-elements'
-import CheckoutForm from './CheckoutForm'
+import Stripe from './Stripe'
 
 class Checkout extends Component {
   constructor() {
@@ -52,12 +52,14 @@ class Checkout extends Component {
               </th>
             </tr>
           </table>
-          <h1>Billing and Payment Information</h1>
-          <StripeProvider apiKey="pk_test_12345">
-            <Elements>
-              <CheckoutForm />
-            </Elements>
-          </StripeProvider>
+          {/* <h1>Billing and Payment Information</h1> */}
+          <Stripe
+            name="Payment Information"
+            description="Please fill the fields below"
+            amount={currentCart.reduce((accumulator, product) => {
+              return accumulator + product.cartItem.quantity * product.price
+            }, 0)}
+          />
           {/* <form onSubmit={this.handleSubmit}>
             <h2>Address:</h2>
             <label>Street:</label>
