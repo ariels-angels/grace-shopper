@@ -68,7 +68,7 @@ class Checkout extends Component {
           </div>
         )
       }
-    } else if (!this.props.cart) {
+    } else if (!this.props.cart.length) {
       return <h1>Loading!</h1>
     } else {
       console.log(this.props.cart)
