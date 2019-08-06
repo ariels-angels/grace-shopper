@@ -12,8 +12,7 @@ const STRIPE_PUBLISHABLE =
 const PAYMENT_SERVER_URL =
   process.env.NODE_ENV === 'production'
     ? 'https://grace-shredder-1906.herokuapp.com/api/payments'
-    : 'http://localhost:7693/api/payments' ||
-      'https://grace-shredder-1906.herokuapp.com/api/payments'
+    : 'http://localhost:7693/api/payments'
 
 const CURRENCY = 'USD'
 
@@ -28,7 +27,7 @@ const errorPayment = data => {
 
 const onToken = (amount, description, checkOut) => token =>
   axios
-    .post(PAYMENT_SERVER_URL, {
+    .post('/api/payments', {
       description,
       source: token.id,
       currency: CURRENCY,
