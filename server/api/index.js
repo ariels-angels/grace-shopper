@@ -14,6 +14,7 @@ router.use('/carts', require('./routes/carts'))
 router.use('/users', require('./routes/users'))
 router.use('/products', require('./routes/products'))
 router.use('/example', require('./routes/example'))
+router.use('/charge', require('./routes/example'))
 
 /*
 If someone makes a request that starts with `/api`,

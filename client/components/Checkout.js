@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {checkout} from '../store/currentCart'
+import {StripeProvider} from 'react-stripe-elements'
+import {Elements} from 'react-stripe-elements'
+import CheckoutForm from './CheckoutForm'
 
 class Checkout extends Component {
   constructor() {
@@ -50,7 +53,12 @@ class Checkout extends Component {
             </tr>
           </table>
           <h1>Billing and Payment Information</h1>
-          <form onSubmit={this.handleSubmit}>
+          <StripeProvider apiKey="pk_test_12345">
+            <Elements>
+              <CheckoutForm />
+            </Elements>
+          </StripeProvider>
+          {/* <form onSubmit={this.handleSubmit}>
             <h2>Address:</h2>
             <label>Street:</label>
             <input />
@@ -77,7 +85,7 @@ class Checkout extends Component {
             <input />
             <br />
             <button type="submit">Submit Payment</button>
-          </form>
+          </form> */}
         </div>
       )
     }
