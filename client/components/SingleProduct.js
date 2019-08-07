@@ -33,11 +33,10 @@ class SingleProduct extends React.Component {
   async handleSubmit(event) {
     event.preventDefault()
     await this.props.addToCurrentCart(this.state)
-    this.props.history.push('/cart')
+    this.props.history.push('/products')
   }
 
   render() {
-    console.log(this.state)
     const currentProduct = this.props.products.find(
       product => product.id === Number(this.props.match.params.id)
     )

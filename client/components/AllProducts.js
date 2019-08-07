@@ -5,7 +5,6 @@ import {CardDeck} from 'react-bootstrap'
 
 class AllProducts extends React.Component {
   render() {
-    //delete this comment
     const {products} = this.props
     if (!products) {
       return <h1>Loading!</h1>
@@ -31,5 +30,3 @@ const mapStateToProps = state => ({
 const Products = connect(mapStateToProps, null)(AllProducts)
 
 export default Products
-
-//export default connect(mapStateToProps, mapDispatchToProps)(AllProducts)
