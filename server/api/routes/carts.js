@@ -27,7 +27,7 @@ router.get('/active', async (req, res, next) => {
   }
 })
 
-router.get('/past', async (req, res, next) => {
+router.get('/past', utils.userGateway, async (req, res, next) => {
   try {
     const cart = await Cart.findAll({
       include: [{model: Product}],
@@ -106,7 +106,6 @@ router.post('/active', async (req, res, next) => {
           cartId: cart.id,
           productId: req.body.productId,
           quantity: req.body.quantity
-          // price: req.body.productPrice
         })
       } else {
         await existingItem.update({

@@ -26,7 +26,6 @@ const paymentApi = app => {
 
   app.post('/api/payments', async (req, res) => {
     try {
-      console.log(req.body)
       await stripe.charges.create(req.body, postStripeCharge(res))
     } catch (error) {
       console.log(error.message)

@@ -19,7 +19,6 @@ class Checkout extends Component {
   }
 
   render() {
-    console.log('OUR PROPS:', this.props)
     const currentCart = this.props.cart.products
     const {isLoggedIn} = this.props
 
@@ -71,7 +70,6 @@ class Checkout extends Component {
     } else if (!this.props.cart.length) {
       return <h1>Loading!</h1>
     } else {
-      console.log(this.props.cart)
       return (
         <div>
           <h1>Order Summary</h1>

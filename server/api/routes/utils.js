@@ -9,7 +9,7 @@ module.exports = {
   },
 
   userGateway: function(req, res, next) {
-    if (!req.user || req.user.id === req.params.id) next()
+    if (req.user) next()
     else {
       res.sendStatus(403)
     }

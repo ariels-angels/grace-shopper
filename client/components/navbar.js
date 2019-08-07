@@ -23,6 +23,7 @@ const NavigationBar = ({handleClick, isLoggedIn, currentCart}) => (
               <a href="#" onClick={handleClick}>
                 LOGOUT
               </a>
+              <Link to="/pastCarts">ORDER HISTORY</Link>
               {!currentCart.products ? (
                 <Link to="/cart">CART {'(0)'}</Link>
               ) : (

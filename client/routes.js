@@ -10,6 +10,7 @@ import SingleProduct from './components/SingleProduct'
 import Home from './components/Home'
 import {getAllProducts} from './store/allProducts'
 import Checkout from './components/Checkout'
+import PastCarts from './components/PastCarts'
 
 /**
  * COMPONENT
@@ -34,10 +35,11 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
+            <Route exact path="/pastCarts" component={PastCarts} />
             <Route path="/" component={Home} />
           </Switch>
         )}
-        {/* Displays our Login component as a fallback */}
+        {/* Displays our Home component as a fallback */}
         <Route component={Home} />
       </Switch>
     )
